@@ -27,6 +27,9 @@ function App() {
 					{action} Camara
 				</button>
 			</div>
+			<div>
+				<h3>Juan Pablo Estrada Aleman - 201800709</h3>
+			</div>
 		</div>
 	);
 }
