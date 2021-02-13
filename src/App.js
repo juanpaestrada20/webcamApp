@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Webcam from 'react-webcam';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [state, setState] = useState(false);
+	const [action, setAction] = useState('Activar');
+	const [message, setMessage] = useState(`Deberias de activa tu camarita <3`);
+	const enableWebcam = () => {
+		setState(!state);
+		if (!state) {
+			setMessage(`Mejor desactivala, estas feo :s`);
+			setAction('Descativar');
+		} else {
+			setAction('Activar');
+			setMessage(`Deberias de activa tu camarita <3`);
+		}
+	};
+	return (
+		<div className='App'>
+			<header className='App-header'>
+				<h1>{message}</h1>
+				{state ? <Webcam /> : <></>}
+			</header>
+			<div className='button-box'>
+				<button className='button-form' onClick={enableWebcam}>
+					{action} Camara
+				</button>
+			</div>
+		</div>
+	);
 }
 
 export default App;
